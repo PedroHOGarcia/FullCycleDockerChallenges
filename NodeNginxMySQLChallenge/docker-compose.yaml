@@ -2,12 +2,27 @@
 version: '3.8'
 
 services:
-  db:
+  nodebackend:
+    container_name: nodebackend
+    image: pedrohenriquegarcia/nodebackend
+    entrypoint: dockerize -wait tcp://mysqldatabase:3306 -timeout 20s node src/app.js
+    build: ./node
+    networks:
+      - backendnetwork
+      - loadbalancernetwork
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    container_name: mysqldatabase
     image: mysql:8.3.0
     restart: always
+    command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: testemysql
-      MYSQL_DATABASE: nodedatabase
+      MYSQL_DATABASE: NodeDatabase
     networks:
       - backendnetwork
     volumes:
