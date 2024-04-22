@@ -17,8 +17,10 @@ Se não estiver:
 ## Desafio 2
 
 Subir uma aplicação que utilize o nginx como loadbalancer, o backend feito em node e um database mysql. O desafio em ter um docker-compose que irá subir toda a sua aplicação e ao navegador acessar localhost/8080 deverá retornar:
-<h1>Full Cycle Rocks!</h1>
 
+```html 
+<h1>Full Cycle Rocks!</h1>
+```
 Com uma lista de nomes cadastrada no banco de dados.
 
 Como rodar?
