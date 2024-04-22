@@ -77,7 +77,7 @@ function create_string_html_table( data_list ){
 app.get(
     '/', (req, res) => {
         connection.query(
-            'SELECT * FROM TbPersons', (err, results) => {
+            'SELECT name FROM TbPersons', (err, results) => {
                 if (err) throw err;                
                 
                 let html_table = create_string_html_table(results);
